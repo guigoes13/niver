@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="main.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;	
+}
+html {
+	font-family: "helvetica neue", sans serif;
+}
+.nav {
+	border-bottom: solid 1px #eaeaeb;
+	text-align: right;
+	height: 70px;
+	line-height: 70px;
+}
+.menu {
+	margin: 0 30px 0 0;
+}
+.menu a {
+	clear: right;
+	text-decoration: none;
+	color: grey;
+	padding: 15px 15px 15px 15px;
+	margin: 0 10px;
+	line-height: 70px;
+}
+.menu a:hover {
+	background-color: #888;
+	color: #fff;
+}
+label {
+	margin: 0 40px 0 0;
+	font-size: 26px;
+	line-height: 70px;
+	display: none;
+	width: 26px;
+	float: right;
+}
+#toggle {
+	display: none;
+}
+
+@media only screen and (max-width: 700px) {
+	label {
+		display: block;
+		cursor: pointer;
+	}
+	.menu {
+		text-align: center;
+		width: 100%;
+		display: none;
+    position: static;
+	}
+	.menu a {
+		display: block;
+		border-bottom: solid 1px #eaeaeb;
+		margin: 0;
+		padding: 0;
+	}
+	.menu a:hover {
+		color:#fff;
+		background-color: #888;
+	}
+
+	#toggle:checked + .menu {
+		display: block;
+	}
+}
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #023047
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            background-color: mediumturquoise;
+        }
+
+        .formLogin {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border-radius: 7px;
+            padding: 40px;
+            box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+            gap: 5px
+        }
+
+        .areaLogin img {
+            width: 420px;
+        }
+
+        .formLogin h1 {
+            padding: 0;
+            margin: 0;
+            font-weight: 500;
+            font-size: 2.3em;
+        }
+
+        .formLogin p {
+            display: inline-block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+    
+        .formLogin input {
+            padding: 15px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            margin-top: 5px;
+            border-radius: 4px;
+            transition: all linear 160ms;
+            outline: none;
+        }
+
+
+        .formLogin input:focus {
+            border: 1px solid #f72585;
+        }
+
+        .formLogin label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .formLogin a {
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #555;
+            transition: all linear 160ms;
+        }
+
+        .formLogin a:hover {
+            color: #f72585;
+        }
+
+        .btn {
+            background-color: #f72585;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            border: none !important;
+            transition: all linear 160ms;
+            cursor: pointer;
+            margin: 0 !important;
+
+        }
+        #botao{
+            background-color: #f72585;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            border: none !important;
+            transition: all linear 160ms;
+            cursor: pointer;
+            margin: 0 !important;
+
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #ff0676;
+
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            border-radius: 25px;
+            box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+            padding: 30px;
+            margin: 40px;
+            width: 400px;
+            transition: all 0.3s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            cursor: pointer;
+        }
+
+        .card p {
+            color: #a3a5ae;
+            font-size: 16px;
+        }
+
+        .image {
+            float: right;
+            max-width: 64px;
+            max-height: 44px;
+        }
+
+        .green {
+            border-left: 3px solid #3bb54a;
+        }
+
+
+       
+    </style>
+    <script>
+ 
+        function aparecer(){
+            document.getElementById("numero").style.display = "block";
+
+        }
+
+        function escolher(){
+            document.getElementById("mamma").style.display = "none";
+            document.getElementById("abracio").style.display = "none";
+
+            var numero = document.getElementById('numero').value;
+
+            if (numero%2==0 ){
+                document.getElementById("mamma").style.display = "block";
+            }
+            else {
+                document.getElementById("abracio").style.display = "block";
+            }
+        }
+        
+        function login() {
+            var code = document.getElementById('code').value;
+            var senha = minusculo(code);
+            if (senha == 'obaoba') {
+                document.getElementById("row").style.display = "block";
+                document.getElementById("formulario").style.display = "none";
+
+            } else {
+                alert('poxa');
+            }
+        }
+        function minusculo(text) {
+            return text.toLowerCase();
+
+        }
+        function gerarNumeroEntreUmEDois() {
+            return Math.floor(Math.random() * 2) + 1;
+        }
+
+        function searchOnEnter(event) {
+            if (event.key === "Enter") {
+                login();
+                event.preventDefault(); // Impede o envio do formulário padrão
+
+
+            }
+        }
+        function searchOnEnter1(event) {
+            if (event.key === "Enter") {
+                escolher();
+                event.preventDefault(); // Impede o envio do formulário padrão
+
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="page">
+            <div class="row" style="display: none;" id="row">
+                <div class="card green" id="card" style="width: 600px; height: 680px; background-color: white;">
+                    <h2>Aperte aqui para descobrir o local que vamos no nosso aniversário! </h2>
+                    
+                  <div style="text-align: center;" > 
+                    <button onclick="aparecer()" id="botao" style=" padding: 15px 30px; font-size: 16px; border-radius:30px">APERTE!!!!!!</button>
+                </div>
+                <br><br>    
+                <div style="padding-left:20%"> 
+                    <input class="formLogin input" type="text" placeholder="Escolha um numero inteiro " id="numero" style="display: none;border-radius: 20px; font-size:23px" onkeypress="searchOnEnter1(event)" />
+                </div> 
+                <br><br>
+
+                <div id="mamma" style="display: none; text-align: center;">
+                    <p style="color: black;">Nós vamos no Mamma Jamma do Norte Shopping!!!!</p> <br><br>
+                    <img src="b.png" alt="" width="60%">
+                </div>
+
+                    <div style="display: none; text-align: center;"id="abracio">
+                    <p style="color: black;">Nós vamos no Abbraccio Cucina do Norte Shopping!!!!</p> <br><br><br><br>
+                    <img src="a.png" alt="" width="60%" style="margin-top: -60px;">
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div id="formulario" style="display: block;">
+        <form method="POST" class="formLogin" >
+            <p>Seja bem vinda! Para começar coloque aqui o nome do lugar que fomos no nosso primeiro encontro:</p>
+
+            <label for="password">Senha</label>
+            <input type="password" placeholder="Digite a senha" id="code" onkeypress="searchOnEnter(event)" />
+
+        </form>
+</div>
+</div>
+
+</body>
+
+</html>
